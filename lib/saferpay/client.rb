@@ -73,7 +73,7 @@ module Saferpay
     # Raises an error if missing parameters
     def complete_payment(params = {})
       params = default_params.merge(params)
-      parse_complete_payment_response self.class.get('/PayCompleteV2.asp', :query => params)
+      parse_complete_payment_response self.class.get('/PayComplete.asp', :query => params)
     end
 
     private
