@@ -106,8 +106,10 @@ module Saferpay
       diff = []
 
       check.each do |param|
-        diff << param if original[param] != callback[:data][param.downcase.to_sym]
+        diff << "#{param}:#{original[param]}!=#{callback[:data][param.downcase.to_sym]}" if original[param] != callback[:data][param.downcase.to_sym]
       end
+      
+      
 
       if diff.any?
         raise Saferpay::Error::BadRequest, "Possible manipulation - #{diff.join(', ')} not matching"
