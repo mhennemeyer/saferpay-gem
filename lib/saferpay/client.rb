@@ -106,7 +106,7 @@ module Saferpay
       diff = []
 
       check.each do |param|
-        diff << "#{param}:#{original[param]}!=#{callback[:data][param.downcase.to_sym]}" if original[param] != callback[:data][param.downcase.to_sym]
+        diff << "#{param}:#{original[param]}!=#{callback[:data][param.downcase.to_sym]}" if "#{original[param]}" != "#{callback[:data][param.downcase.to_sym]}"
       end
       
       
