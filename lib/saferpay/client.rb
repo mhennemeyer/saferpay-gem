@@ -108,9 +108,6 @@ module Saferpay
       check.each do |param|
         diff << "#{param}:#{original[param]}!=#{callback[:data][param.downcase.to_sym]}" if "#{original[param]}" != "#{callback[:data][param.downcase.to_sym]}"
       end
-      
-      
-
       if diff.any?
         raise Saferpay::Error::BadRequest, "Possible manipulation - #{diff.join(', ')} not matching"
       end
@@ -119,6 +116,7 @@ module Saferpay
     def default_params
       {
         'ACCOUNTID' => @options[:account_id],
+        'spPassword' => @options[:password]
       }.reject{ |k, v| v.nil? }
     end
 
